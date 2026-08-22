@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { COURSES_DATA } from '../data/coursesData';
 import { TECEAUT_LOGO_URL } from '../data/assets';
+import { CONTACT_INFO } from '../data/contacts';
 
 interface Message {
   id: string;
@@ -34,8 +35,8 @@ interface AIAssistantWidgetProps {
   onOpenEnrollment: (courseTitle?: string) => void;
 }
 
-const WHATSAPP_NUMBER = '5571987654321';
-const INSTAGRAM_URL = 'https://instagram.com/teceaut_cursos';
+const WHATSAPP_NUMBER = CONTACT_INFO.whatsappRaw;
+const INSTAGRAM_URL = CONTACT_INFO.instagram.url;
 
 export const AIAssistantWidget: React.FC<AIAssistantWidgetProps> = ({ onOpenEnrollment }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -144,7 +145,7 @@ export const AIAssistantWidget: React.FC<AIAssistantWidgetProps> = ({ onOpenEnro
 
     if (query.includes('onde') || query.includes('endereço') || query.includes('local') || query.includes('salvador') || query.includes('bahia') || query.includes('fica')) {
       return {
-        text: `Nosso Centro de Treinamento fica localizado em **Salvador - BA** (Rua das Indústrias, 123 - Imbuí), com fácil acesso por metrô e ônibus, estacionamento e laboratórios climatizados.\n\n` +
+        text: `Nosso Centro de Treinamento fica localizado em **Salvador - BA** (${CONTACT_INFO.address.full}), com fácil acesso, estacionamento e laboratórios climatizados.\n\n` +
               `Venha fazer uma visita para conhecer as bancadas práticas de perto! Entre em contato no WhatsApp para agendar ou veja a localização e vídeos no Instagram.`,
         actions: [
           { label: '🟢 Agendar Visita pelo WhatsApp', type: 'whatsapp', payload: 'Olá! Gostaria de agendar uma visita para conhecer os laboratórios da Teceaut Cursos.' },

@@ -11,6 +11,7 @@ import {
   Clock
 } from 'lucide-react';
 import { COURSES_DATA } from '../data/coursesData';
+import { CONTACT_INFO } from '../data/contacts';
 
 interface EnrollmentModalProps {
   isOpen: boolean;
@@ -52,7 +53,7 @@ Gostaria de confirmar minha pré-reserva e receber as opções de pagamento!`;
 
     const encoded = encodeURIComponent(message);
     setTimeout(() => {
-      window.open(`https://wa.me/5571991003225?text=${encoded}`, '_blank');
+      window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${encoded}`, '_blank');
     }, 800);
   };
 
@@ -96,7 +97,7 @@ Gostaria de confirmar minha pré-reserva e receber as opções de pagamento!`;
                 Pré-Matrícula Enviada com Sucesso!
               </h4>
               <p className="text-slate-600 text-sm max-w-md mx-auto">
-                Estamos te redirecionando para o WhatsApp oficial da Teceaut Cursos <strong>(71) 9.9100-3225</strong> para formalizar sua matrícula com a taxa promocional.
+                Estamos te redirecionando para o WhatsApp oficial da Teceaut Cursos <strong>{CONTACT_INFO.phoneFormatted}</strong> para formalizar sua matrícula com a taxa promocional.
               </p>
               <div className="pt-4">
                 <button
@@ -247,7 +248,7 @@ Gostaria de confirmar minha pré-reserva e receber as opções de pagamento!`;
               </button>
 
               <p className="text-[11px] text-center text-slate-400">
-                Ou ligue diretamente para nossa central: <strong className="text-slate-700">(71) 9.9100-3225</strong>
+                Ou ligue diretamente para nossa central: <strong className="text-slate-700">{CONTACT_INFO.phoneFormatted}</strong>
               </p>
             </form>
           )}

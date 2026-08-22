@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { PageTab } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
+import { CONTACT_INFO } from '../data/contacts';
 
 interface ContactPageProps {
   setCurrentTab: (tab: PageTab) => void;
@@ -48,12 +49,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({
 
     const encoded = encodeURIComponent(fullMessage);
     setTimeout(() => {
-      window.open(`https://wa.me/5571991003225?text=${encoded}`, '_blank');
+      window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${encoded}`, '_blank');
     }, 600);
   };
 
-  const whatsappUrl = 'https://wa.me/5571991003225?text=Olá!%20Gostaria%20de%20tirar%20dúvidas%20sobre%20os%20cursos%20da%20Teceaut.';
-  const mapsRouteUrl = 'https://maps.google.com/?q=Rua+das+Industrias+123+Imbui+Salvador+BA';
+  const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsappRaw}?text=Olá!%20Gostaria%20de%20tirar%20dúvidas%20sobre%20os%20cursos%20da%20Teceaut.`;
+  const mapsRouteUrl = CONTACT_INFO.mapsUrl;
 
   return (
     <div className="w-full bg-[#f8fafc] text-slate-900 min-h-screen">
@@ -82,7 +83,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
             </h1>
             <div className="w-16 h-1 bg-[#F5C518] mt-3 rounded" />
             <p className="text-slate-300 text-sm sm:text-base mt-4 leading-relaxed">
-              Estamos localizados no Imbuí, em Salvador - BA. Tire suas dúvidas sobre turmas, valores, agende uma visita ao laboratório ou faça sua pré-matrícula.
+              Estamos localizados no Cabula, em Salvador - BA ({CONTACT_INFO.address.full}). Tire suas dúvidas sobre turmas, valores, agende uma visita ao laboratório ou faça sua pré-matrícula.
             </p>
           </div>
 
@@ -107,7 +108,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                     Atendimento Rápido via WhatsApp
                   </span>
                   <div className="text-2xl font-black text-slate-900 mt-1">
-                    (71) 9.9100-3225
+                    {CONTACT_INFO.phoneFormatted}
                   </div>
                   <p className="text-xs text-slate-600 mt-1">
                     Atendimento pedagógico para matrículas, grade curricular e valores promocionais.
@@ -136,7 +137,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                     E-mail Oficial
                   </span>
                   <div className="text-lg font-bold text-slate-900 mt-0.5 break-all">
-                    matricula@teceautcursos.com.br
+                    {CONTACT_INFO.email}
                   </div>
                   <p className="text-xs text-slate-500 mt-1">
                     Envie propostas para treinamento in-company corporativo ou documentos de matrícula.
@@ -156,10 +157,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                     Endereço da Unidade
                   </span>
                   <div className="text-base font-bold text-slate-900 mt-0.5">
-                    Rua das Indústrias, 123 - Imbuí
+                    {CONTACT_INFO.address.street}
                   </div>
                   <div className="text-xs text-slate-600">
-                    Salvador - BA • CEP 41720-050
+                    {CONTACT_INFO.address.neighborhood}, {CONTACT_INFO.address.city} - {CONTACT_INFO.address.state} • CEP {CONTACT_INFO.address.cep}
                   </div>
                   <a
                     href={mapsRouteUrl}
@@ -234,7 +235,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                 </div>
                 <h4 className="text-2xl font-bold text-slate-900">Mensagem Enviada!</h4>
                 <p className="text-slate-600 text-sm max-w-md mx-auto">
-                  Obrigado pelo contato. Você foi encaminhado para o WhatsApp oficial da Teceaut Cursos <strong>(71) 9.9100-3225</strong>.
+                  Obrigado pelo contato. Você foi encaminhado para o WhatsApp oficial da Teceaut Cursos <strong>{CONTACT_INFO.phoneFormatted}</strong>.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
@@ -346,13 +347,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({
             <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
               <div>
                 <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">
-                  Fácil Acesso no Imbuí
+                  Fácil Acesso no Cabula
                 </span>
                 <h3 className="text-2xl font-black text-white mt-1">
                   Localização da Teceaut Cursos
                 </h3>
                 <p className="text-slate-300 text-xs sm:text-sm">
-                  Rua das Indústrias, 123 - Imbuí, Salvador - BA • Próximo às principais linhas de ônibus e metrô.
+                  {CONTACT_INFO.address.full} • Próximo às principais vias, transporte público e comércio.
                 </p>
               </div>
 
@@ -371,7 +372,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
             <div className="w-full h-80 rounded-2xl overflow-hidden bg-slate-800 relative border border-blue-900 flex items-center justify-center">
               <iframe
                 title="Mapa Teceaut Cursos"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.9701777271927!2d-38.435450000000005!3d-12.97375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x716104e1d35a3a7%3A0x8e82d1c68f237efb!2sImbu%C3%AD%2C%20Salvador%20-%20BA!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
+                src={CONTACT_INFO.mapsEmbedUrl}
                 className="w-full h-full border-0 grayscale contrast-125 opacity-90"
                 loading="lazy"
               />
@@ -381,7 +382,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                   <span>TECEAUT CURSOS</span>
                 </div>
                 <p className="text-[11px] text-slate-200 mt-1">
-                  Rua das Indústrias, 123 - Imbuí, Salvador - BA
+                  {CONTACT_INFO.address.full}
                 </p>
               </div>
             </div>

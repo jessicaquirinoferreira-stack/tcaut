@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search, ChevronRight, Zap, Phone, Sparkles } from 'lucide-react';
 import { PageTab, GalleryItem } from '../types';
 import { GALLERY_ITEMS, GALLERY_CATEGORIES } from '../data/galleryData';
+import { CONTACT_INFO } from '../data/contacts';
 
 interface GalleryPageProps {
   setCurrentTab: (tab: PageTab) => void;
@@ -20,7 +21,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
     ? GALLERY_ITEMS
     : GALLERY_ITEMS.filter((item) => item.category === activeCategory);
 
-  const whatsappUrl = 'https://wa.me/5571991003225?text=Olá!%20Vi%20as%20fotos%20do%20laboratório%20da%20Teceaut%20e%20gostaria%20de%20agendar%20uma%20visita%20ou%20fazer%20minha%20matrícula.';
+  const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${encodeURIComponent('Olá! Vi as fotos do laboratório da Teceaut e gostaria de agendar uma visita ou fazer minha matrícula.')}`;
 
   return (
     <div className="w-full bg-[#f8fafc] text-slate-900 min-h-screen">
@@ -157,7 +158,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({
               Conheça Nossa Estrutura Pessoalmente
             </span>
             <h3 className="text-2xl sm:text-3xl font-black text-white mt-1">
-              Quer visitar nosso laboratório no Imbuí?
+              Quer visitar nosso laboratório no Cabula?
             </h3>
             <p className="text-slate-300 text-xs sm:text-sm mt-1 max-w-xl">
               Agende um horário e venha conhecer nossas bancadas de teste, ferramentas e bater um papo com os professores.

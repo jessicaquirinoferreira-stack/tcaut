@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { PageTab, Course } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
+import { CONTACT_INFO } from '../data/contacts';
 
 interface CoursesPageProps {
   setCurrentTab: (tab: PageTab) => void;
@@ -237,7 +238,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
             </div>
 
             <a
-              href="https://wa.me/5571991003225?text=Olá!%20Gostaria%20de%20uma%20orientação%20técnica%20para%20escolher%20o%20melhor%20curso%20para%20mim."
+              href={`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${encodeURIComponent('Olá! Gostaria de uma orientação técnica para escolher o melhor curso para mim.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3.5 rounded-xl text-xs flex items-center gap-2 shadow-lg shrink-0 transition-colors"

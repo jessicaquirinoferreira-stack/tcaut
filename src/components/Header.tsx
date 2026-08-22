@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { PageTab } from '../types';
 import { TECEAUT_LOGO_URL } from '../data/assets';
+import { CONTACT_INFO } from '../data/contacts';
 
 interface HeaderProps {
   currentTab: PageTab;
@@ -44,8 +45,7 @@ export const Header: React.FC<HeaderProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const whatsappNumber = '5571987654321';
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20as%20matrículas%20da%20Teceaut%20Cursos.`;
+  const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsappRaw}?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20as%20matrículas%20da%20Teceaut%20Cursos.`;
 
   return (
     <header className="sticky top-0 z-50 shadow-2xl bg-[#06152e] border-b border-[#F5C518]/25 font-sans">
@@ -149,20 +149,20 @@ export const Header: React.FC<HeaderProps> = ({
               <div className="w-3.5 h-3.5 rounded-full bg-[#25D366] flex items-center justify-center text-white">
                 <Phone className="w-2.5 h-2.5" />
               </div>
-              <span className="font-semibold text-white">(71) 98765-4321</span>
+              <span className="font-semibold text-white">{CONTACT_INFO.phoneFormatted}</span>
             </a>
 
             <a 
-              href="mailto:contato@teceautcursos.com.br"
+              href={CONTACT_INFO.emailUrl}
               className="hidden sm:flex items-center gap-1.5 hover:text-[#F5C518] transition-colors"
             >
               <Mail className="w-3.5 h-3.5 text-slate-400" />
-              <span>contato@teceautcursos.com.br</span>
+              <span>{CONTACT_INFO.email}</span>
             </a>
 
             <div className="hidden md:flex items-center gap-1.5 text-slate-300">
               <MapPin className="w-3.5 h-3.5 text-[#F5C518]" />
-              <span>Rua das Indústrias, 123 - Imbuí, Salvador - BA</span>
+              <span>{CONTACT_INFO.address.full}</span>
             </div>
           </div>
 
@@ -251,7 +251,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="w-full bg-[#25D366] text-white font-bold py-2.5 px-4 rounded text-center text-xs shadow flex items-center justify-center gap-2"
               >
                 <Phone className="w-4 h-4" />
-                <span>Falar no WhatsApp (71) 98765-4321</span>
+                <span>Falar no WhatsApp {CONTACT_INFO.phoneFormatted}</span>
               </a>
             </div>
           </div>

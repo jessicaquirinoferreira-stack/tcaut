@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MessageSquare, X, Send, CheckCircle2, Zap } from 'lucide-react';
 import { COURSES_DATA } from '../data/coursesData';
+import { CONTACT_INFO } from '../data/contacts';
 
 interface WhatsAppFloatingButtonProps {
   onSelectCourse?: (courseTitle: string) => void;
@@ -25,7 +26,7 @@ export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = () 
     const cleanName = studentName.trim() || 'futuro aluno';
     const text = `Olá, Equipe Teceaut Cursos! Meu nome é ${cleanName}. Gostaria de garantir minha vaga e saber mais sobre o curso de ${selectedCourse} com as condições especiais.`;
     const encoded = encodeURIComponent(text);
-    window.open(`https://wa.me/5571991003225?text=${encoded}`, '_blank');
+    window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${encoded}`, '_blank');
     setIsOpen(false);
   };
 
@@ -134,7 +135,7 @@ export const WhatsAppFloatingButton: React.FC<WhatsAppFloatingButtonProps> = () 
 
           <div className="p-2.5 bg-slate-100 text-[10px] text-center text-slate-500 flex items-center justify-center gap-1">
             <Zap className="w-3 h-3 text-amber-500 fill-amber-500" />
-            <span>(71) 9.9100-3225 • Atendimento Oficial Teceaut</span>
+            <span>{CONTACT_INFO.phoneFormatted} • Atendimento Oficial Teceaut</span>
           </div>
         </div>
       )}

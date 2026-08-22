@@ -12,6 +12,7 @@ import {
   DollarSign
 } from 'lucide-react';
 import { Course } from '../types';
+import { CONTACT_INFO } from '../data/contacts';
 
 interface CourseDetailModalProps {
   course: Course | null;
@@ -27,7 +28,7 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
   if (!course) return null;
 
   const whatsappMessage = `Olá! Gostaria de me matricular no curso de ${course.title} da Teceaut Cursos.`;
-  const whatsappUrl = `https://wa.me/5571991003225?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">

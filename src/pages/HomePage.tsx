@@ -37,6 +37,7 @@ import { COURSES_DATA } from '../data/coursesData';
 import { GALLERY_ITEMS } from '../data/galleryData';
 import { TESTIMONIALS_DATA } from '../data/testimonialsData';
 import { TECHNICAL_ARTICLES } from '../data/technicalData';
+import { CONTACT_INFO } from '../data/contacts';
 
 interface HomePageProps {
   setCurrentTab: (tab: PageTab) => void;
@@ -51,10 +52,9 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectCourse,
   onSelectGalleryItem,
 }) => {
-  const whatsappNumber = '5571987654321';
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20as%20matrículas%20da%20Teceaut%20Cursos.`;
-  const emailUrl = 'mailto:contato@teceautcursos.com.br';
-  const mapsUrl = 'https://maps.google.com/?q=Rua+das+Industrias+123+Imbui+Salvador+BA';
+  const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsappRaw}?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20as%20matrículas%20da%20Teceaut%20Cursos.`;
+  const emailUrl = CONTACT_INFO.emailUrl;
+  const mapsUrl = CONTACT_INFO.mapsUrl;
 
   const [activeGalleryTab, setActiveGalleryTab] = useState('todas');
 
@@ -780,7 +780,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     </div>
                     <div>
                       <span className="text-[10px] text-slate-400 block uppercase font-semibold">Sede Operacional:</span>
-                      <span className="text-slate-200">Rua das Indústrias, 123 - Imbuí, Salvador - BA</span>
+                      <span className="text-slate-200">{CONTACT_INFO.address.full}</span>
                     </div>
                     <div>
                       <span className="text-[10px] text-slate-400 block uppercase font-semibold">Atividade Econômica:</span>

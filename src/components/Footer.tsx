@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { PageTab } from '../types';
 import { TECEAUT_LOGO_URL } from '../data/assets';
+import { CONTACT_INFO } from '../data/contacts';
 
 interface FooterProps {
   setCurrentTab: (tab: PageTab) => void;
@@ -116,25 +117,33 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentTab }) => {
             </h5>
             <ul className="text-[11px] text-slate-300 space-y-2">
               <li className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#F5C518] shrink-0" />
-                <span>(71) 98765-4321</span>
-              </li>
-              <li className="flex items-center gap-2">
                 <div className="w-3.5 h-3.5 rounded-full bg-[#25D366] flex items-center justify-center text-white shrink-0">
                   <Phone className="w-2 h-2" />
                 </div>
-                <span>(71) 98765-4321</span>
+                <a 
+                  href={CONTACT_INFO.whatsappUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-[#F5C518] font-medium transition-colors"
+                >
+                  {CONTACT_INFO.phoneFormatted} (WhatsApp)
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#F5C518] shrink-0" />
-                <span className="truncate">contato@teceautcursos.com.br</span>
+                <a 
+                  href={CONTACT_INFO.emailUrl} 
+                  className="truncate hover:text-[#F5C518] transition-colors"
+                >
+                  {CONTACT_INFO.email}
+                </a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#F5C518] shrink-0 mt-0.5" />
                 <span className="leading-tight">
-                  Rua das Indústrias, 123<br />
-                  Imbuí, Salvador - BA<br />
-                  CEP: 41720-050
+                  {CONTACT_INFO.address.street}<br />
+                  {CONTACT_INFO.address.neighborhood}, {CONTACT_INFO.address.city} - {CONTACT_INFO.address.state}<br />
+                  CEP: {CONTACT_INFO.address.cep}
                 </span>
               </li>
             </ul>
