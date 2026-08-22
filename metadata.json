@@ -1,0 +1,6 @@
+{
+  "name": "TECEAUT CURSOS - Formação Profissional",
+  "description": "Site profissional para a escola técnica TECEAUT CURSOS em Salvador/BA - Formação em Elétrica, Comandos Elétricos, Automação Industrial, CLP e Inversores de Frequência.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
